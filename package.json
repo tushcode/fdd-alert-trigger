@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "dev": "node server"
+        "start": "node server"
       },
     "dependencies": {
         "ws": "^8.18.0"
