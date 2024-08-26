@@ -1,6 +1,6 @@
 import WebSocket, { WebSocketServer } from "ws";
 
-const wss = new WebSocketServer({ port: 8080 });
+const wss = new WebSocketServer({ port: process.env.PORT });
 
 /**
  * @type { WebSocket[]} clients - List of Clients, keyed by an identifier.
@@ -21,7 +21,7 @@ wss.on("connection", function connection(ws) {
     // Broadcast the message to all connected clients (including the sender)
     const broadcastMessage = (message) => {
       clients.forEach((client) => {
-        if (client.ws.readyState === WebSocket.OPEN) {
+        if (client.readyState === WebSocket.OPEN) {
           client.send(JSON.stringify(message));
         }
       });
